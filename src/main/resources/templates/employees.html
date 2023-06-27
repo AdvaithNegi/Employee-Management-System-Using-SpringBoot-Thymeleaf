@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Employee Management System</title>
+</head>
+<body>
+
+	<button>
+		<a th:href="@{/employees}">Employee Mangement</a>
+	</button>
+	<br>
+	<br>
+
+	<button>
+		<a th:href="@{/employees/new}">Save Employee</a>
+	</button>
+	<br>
+	<br>
+
+	<table border="2" style="border-collapse: collapse;">
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>Email</th>
+			<th>Update</th>
+			<th>Delete</th>
+		</tr>
+
+		<tr th:each="employee:${employees}">
+			<td th:text="${employee.id}"></td>
+			<td th:text="${employee.name}"></td>
+			<td th:text="${employee.email}"></td>
+			<td><a th:href="@{/employees/update/{id}(id=${employee.id})}">Update</a></td>
+			<td><a th:href="@{/employees/{id}(id=${employee.id})}">Delete</a></td>
+		</tr>
+	</table>
+
+
+</body>
+</html>
